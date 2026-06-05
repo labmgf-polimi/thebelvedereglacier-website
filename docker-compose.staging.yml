@@ -1,10 +1,10 @@
 services:
   webserver:
-    container_name: belvedereapp-local
+    container_name: belvedereapp-staging
     build:
       context: .
       dockerfile: Dockerfile
-    image: thebelvedereglacier-webserver-local:latest
+    image: thebelvedereglacier-webserver-staging:latest
     ports:
       - "8080:80"
     env_file:
