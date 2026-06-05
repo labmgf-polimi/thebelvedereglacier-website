@@ -13,6 +13,3 @@ WORKDIR /var/www/html
 
 # Copy the PHP code file in /app into the container at /var/www/html
 COPY ./app/ .
-
-# Download large point clouds from the internet
-# RUN wget http://labmgf.dica.polimi.it/pujob/storage/belvedere/potree/background/octree.bin -O /var/www/html/potree/assets/pointclouds/background/octree.bin 

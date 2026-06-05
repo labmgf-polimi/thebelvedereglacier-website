@@ -1,10 +1,10 @@
 services:
   webserver:
-    container_name: belvedereapp-staging
+    container_name: belvedereapp
     build:
       context: .
       dockerfile: Dockerfile
-    image: thebelvedereglacier-webserver-staging:latest
+    image: thebelvedereglacier-webserver:latest
     ports:
       - "8080:80"
     env_file:
@@ -14,5 +14,5 @@ services:
       DBNAME: ${DBNAME}
       DBUSERNAME: ${DBUSERNAME}
       DBPORT: ${DBPORT}
-      DBSSLMODE: ${DBSSLMODE}
+      DBSSLMODE: ${DBSSLMODE-""}
       DBPASSWORD: ${DBPASSWORD}
