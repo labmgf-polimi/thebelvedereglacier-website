@@ -1,18 +1,14 @@
 services:
   webserver:
-    container_name: belvedereapp
+    container_name: thebelvedereglacier-website
     build:
       context: .
       dockerfile: Dockerfile
-    image: thebelvedereglacier-webserver:latest
+    image: thebelvedereglacier-website:latest
     ports:
       - "8080:80"
-    env_file:
-      - .env
-    environment:
-      DBHOST: ${DBHOST}
-      DBNAME: ${DBNAME}
-      DBUSERNAME: ${DBUSERNAME}
-      DBPORT: ${DBPORT}
-      DBSSLMODE: ${DBSSLMODE-""}
-      DBPASSWORD: ${DBPASSWORD}
+    restart: unless-stopped
+
+    # Mount the ./site director in the container for real-time updates
+    volumes:
+      - .:/site
