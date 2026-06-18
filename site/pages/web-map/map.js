@@ -9,6 +9,30 @@ function copyLink(event) {
 }
 
 
+// Fetch the survey years from the backend API, populate the dropdown and
+// load the latest year with data on the map.
+fetch(`${API_BASE}/surveys/years/`)
+  .then((response) => response.json())
+  .then((years) => {
+    // Populate the dropdown menu with the fetched years
+    var yearSelect = document.getElementById("yearSelect");
+    years.forEach((year) => {
+      var option = document.createElement("option");
+      option.text = year;
+      option.value = year;
+      yearSelect.add(option);
+    });
+    if (years.length > 0) {
+      var latestYear = years[years.length - 1];
+      yearSelect.value = latestYear;
+      fetchDataByYear(latestYear);
+    }
+  })
+  .catch((error) => console.error("Error fetching years:", error));
+
+
+var fetchedData; // Global variable to store fetched 
+
 // Function to fetch data based on selected year
 function fetchDataByYear(year) {
   fetch(`${API_BASE}/surveys/measurements/?year=${year}`)
@@ -34,30 +58,13 @@ function fetchDataByYear(year) {
     .catch((error) => console.error("Error fetching data:", error));
 }
 
-// Fetch the survey years from the backend API, populate the dropdown and
-// load the latest year with data on the map.
-fetch(`${API_BASE}/surveys/years/`)
-  .then((response) => response.json())
-  .then((years) => {
-    // Populate the dropdown menu with the fetched years
-    var yearSelect = document.getElementById("yearSelect");
-    years.forEach((year) => {
-      var option = document.createElement("option");
-      option.text = year;
-      option.value = year;
-      yearSelect.add(option);
-    });
-    if (years.length > 0) {
-      var latestYear = years[years.length - 1];
-      yearSelect.value = latestYear;
-      fetchDataByYear(latestYear);
-    }
-  })
-  .catch((error) => console.error("Error fetching years:", error));
-
-
-var fetchedData; // Global variable to store fetched 
-
+// Event listener for button click
+document.getElementById("fetchDataButton").addEventListener("click", function() {
+  // Get the selected year from the dropdown menu
+  var selectedYear = document.getElementById("yearSelect").value;
+  // Fetch data based on the selected year
+  fetchDataByYear(selectedYear);
+});
 
 var orthophotoLayer, dsmLayer; // Global variables for fixed WMS layers
 
@@ -82,18 +89,6 @@ function updateWMSLayers(year) {
   dsmLayer.setParams(dsmParams);
 }
 
-// Event listener for button click
-document
-  .getElementById("fetchDataButton")
-  .addEventListener("click", function () {
-    // Get the selected year from the dropdown menu
-    var selectedYear = document.getElementById("yearSelect").value;
-    if (selectedYear) {
-      fetchDataByYear(selectedYear);
-    } else {
-      alert("Please select a year.");
-    }
-  });
 
 // Initialize Leaflet map
 var map = L.map("map").setView([45.95345216928198, 7.911727180145279], 14);
