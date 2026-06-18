@@ -6,9 +6,8 @@ services:
       dockerfile: Dockerfile
     image: thebelvedereglacier-website:latest
     ports:
-      - "8080:80"
+      - "8081:80"
     restart: unless-stopped
 
-    # Mount the ./site director in the container for real-time updates
     volumes:
-      - .:/site
+      - ./site:/var/www/html   # live reload — no rebuild needed on file changes
