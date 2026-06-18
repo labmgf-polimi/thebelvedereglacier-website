@@ -1,4 +1,4 @@
-const API_BASE = 'http://api.thebelvedereglacier.it'; // Base URL for the django backend API
+const API_BASE = 'https://api.thebelvedereglacier.it'; // Base URL for the django backend API
 
 function copyLink(event) {
   event.preventDefault(); // Prevent the default action
