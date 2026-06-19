@@ -9,8 +9,7 @@ function copyLink(event) {
 }
 
 
-// Fetch the survey years from the backend API, populate the dropdown and
-// load the latest year with data on the map.
+// Fetch the survey years from the backend API
 fetch(`${API_BASE}/surveys/years/`)
   .then((response) => response.json())
   .then((years) => {
