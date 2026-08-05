@@ -176,9 +176,9 @@ dsmLegend.addTo(map);
 function downloadCSV() {
   // Convert JSON to CSV format
   var csv =
-    "point_id,Label,East,North,h_ortho,Latitude,Longitude,h,survey_date,survey_year,meas_date,meas_time,meas_strategy,ds_east,ds_north,ds_h\n";
+    "point_id,Label,East,North,h_ortho,Latitude,Longitude,h,survey_date,survey_year,meas_date,meas_time,meas_strategy,std_east,std_north,std_h\n";
   fetchedData.forEach((point) => {
-    csv += `${point.point_id},${point.label},${point.east},${point.north},${point.h},${point.lat},${point.lon},${point.h},${point.survey_date},${point.survey_year},${point.meas_date},${point.meas_time},${point.meas_strategy},${point.ds_east},${point.ds_north},${point.ds_h}\n`;
+    csv += `${point.point_id},${point.label},${point.east},${point.north},${point.h},${point.lat},${point.lon},${point.h},${point.survey_date},${point.survey_year},${point.meas_date},${point.meas_time},${point.meas_strategy},${point.std_east},${point.std_north},${point.std_h}\n`;
   });
 
   // Create a temporary anchor element to trigger the download
