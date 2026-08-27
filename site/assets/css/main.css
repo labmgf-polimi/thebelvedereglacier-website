@@ -2714,6 +2714,19 @@ input, select, textarea {
 				padding-left: 0;
 			}
 
+		ul.actions.equal li {
+			-moz-flex: 1 1 0;
+			-webkit-flex: 1 1 0;
+			-ms-flex: 1 1 0;
+			flex: 1 1 0;
+			max-width: 16rem;
+		}
+
+			ul.actions.equal li > .button {
+				width: 100%;
+				padding: 0;
+			}
+
 		ul.actions.stacked {
 			-moz-flex-direction: column;
 			-webkit-flex-direction: column;
