@@ -2646,6 +2646,13 @@ input, select, textarea {
 				width: 100%;
 			}
 
+			.image.main video {
+				display: block;
+				width: 100%;
+				height: auto;
+				background-color: #000000;
+			}
+
 		@media screen and (max-width: 736px) {
 
 			.image.fit {

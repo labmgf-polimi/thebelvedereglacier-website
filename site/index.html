@@ -73,7 +73,14 @@
 						nearby community of Macugnaga.
 					</p>
 				</header>
-				<a href="pages/monitoring.html" class="image main"><img src="images/main.png" alt="" /></a>
+				<div class="image main">
+					<video controls preload="metadata" playsinline poster="images/main.png">
+						<source src="https://belvedere-website.nbg1.your-objectstorage.com/assets/video_presentazione_ghiacciaio.m4v"
+							type="video/mp4"
+							onerror="this.closest('.image.main').innerHTML = '<img src=&quot;images/main.png&quot; alt=&quot;&quot; />';" />
+						<img src="images/main.png" alt="" />
+					</video>
+				</div>
 				<ul class="actions special">
 					<li><a href="https://labmgf-polimi.github.io/thebelvedereglacier-handbook/" target="_blank"
 							class="button large">Exploration guide</a></li>
